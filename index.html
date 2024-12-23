@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Oktoberfest & The Big Question</title>
+  <style>
+    /* 
+      OCTOBERFEST (BAVARIAN) THEME & VISUALS
+      - Blue & white repeating pattern in the background
+      - Flashy animations & transitions
+    */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Trebuchet MS', sans-serif;
+      color: #333;
+    }
+
+    body {
+      /* Repeating Bavarian diamond pattern using linear-gradient */
+      background: repeating-linear-gradient(
+        45deg,
+        #005BBB 0px,
+        #005BBB 20px,
+        #FFFFFF 20px,
+        #FFFFFF 40px
+      );
+    }
+
+    /* Container for main content */
+    .container {
+      position: relative;
+      text-align: center;
+      padding: 60px 20px 120px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      margin-top: 40px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #ccc;
+      animation: colorChange 3s infinite alternate ease-in-out;
+    }
+
+    /* Animated color change for the heading */
+    @keyframes colorChange {
+      0% {
+        color: #005BBB;
+      }
+      50% {
+        color: #FF7800; /* A nice festive orange */
+      }
+      100% {
+        color: #860111; /* Rich red color */
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 0 auto 20px;
+      max-width: 800px;
+    }
+
+    .marquee {
+      font-size: 1.5rem;
+      margin-top: 50px;
+      color: #A82A2A;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      animation: scrollLeft 8s linear infinite;
+    }
+
+    /* Simple marquee effect */
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Flashing question label */
+    .question {
+      font-size: 2.2rem;
+      font-style: italic;
+      display: inline-block;
+      margin: 40px 0;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      20% {
+        opacity: 1;
+      }
+      30% {
+        opacity: 0.6;
+      }
+      40% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      60% {
+        opacity: 1;
+      }
+      70% {
+        opacity: 0.7;
+      }
+      80% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* 
+      BEER MUG ANIMATION 
+      We'll float some beer mugs from the bottom to the top for a festive look.
+    */
+    .beer-mug {
+      position: absolute;
+      bottom: -80px; /* Start off-screen */
+      font-size: 2.5rem;
+      animation: floatBeer 8s linear infinite;
+    }
+
+    @keyframes floatBeer {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-50vh) rotate(15deg);
+      }
+      100% {
+        transform: translateY(-100vh) rotate(-15deg);
+        opacity: 0;
+      }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #FFF5E1;
+      color: #333;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Oktoberfest &amp; The Big Question</h1>
+  <div class="question">Why is there something rather than nothing?</div>
+
+  <p>
+    This timeless question has puzzled philosophers, scientists, and festival-goers alike. 
+    As you enjoy the festive atmosphere of Oktoberfest—cheers, laughter, music, and 
+    (of course) beer—take a moment to ponder:
+  </p>
+
+  <p>
+    If we imagine a universe with no matter, no energy, and no rules, 
+    how do we reconcile the fact that we find ourselves in a cosmos 
+    brimming with life, energy, and activity? Is it necessity, 
+    chance, or something more mysterious?
+  </p>
+
+  <p>
+    The question might never have a universally accepted answer, 
+    but like a good Bavarian brew, the journey (and the pondering) 
+    is a grand part of the experience.
+  </p>
+
+  <div class="marquee">Prost! 🍻 Prost! 🍻 Prost! 🍻 Prost! 🍻 Prost! 🍻</div>
+</div>
+
+<div class="footer">
+  © 2024 - Enjoy Oktoberfest, and think big!
+</div>
+
+<script>
+  /*
+    We'll dynamically add a few beer mug emojis at random positions
+    along the width of the screen, floating upwards.
+  */
+  const beerCount = 10; 
+  for (let i = 0; i < beerCount; i++) {
+    const mug = document.createElement('div');
+    mug.classList.add('beer-mug');
+    mug.textContent = '🍺';
+    // Random horizontal position
+    mug.style.left = Math.random() * 90 + 'vw'; 
+    // Random animation duration variation
+    mug.style.animationDuration = (6 + Math.random() * 4) + 's';
+    document.body.appendChild(mug);
+  }
+</script>
+
+</body>
+</html>
